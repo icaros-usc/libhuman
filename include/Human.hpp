@@ -129,7 +129,6 @@ public:
               = accLimitsInvalid ? DEFAULT_LIMITS_BUFFER * getAccelerationLimits()
                                  : accelerationLimits;
 
-      std::cout<<getAccelerationLimits()<<std::endl;
       return mHuman->postProcessPath<PostProcessor>(
               sentVelocityLimits,
               sentAccelerationLimits,
