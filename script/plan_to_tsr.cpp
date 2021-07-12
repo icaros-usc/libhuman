@@ -142,14 +142,14 @@ int main(int argc, char** argv)
 aikido::constraint::dart::CollisionFreePtr selfCollConstraint =
         human.getSelfCollisionConstraint(
                 human.getRightArmSpace(), human.getRightArm()->getMetaSkeleton());
-    ROS_INFO("Finish selfCollConstraint");
 
-
+    //Change the maxNumTrials, which will then speed up the sampling process
+    int maxNumTrails = 2;
 // Sample from planToTSR
     aikido::trajectory::TrajectoryPtr planTSRSamples = human.planRightArmToTSR(sodaTSRs.at(0),
                                                                                selfCollConstraint,
-                                                                               2.00,
-                                                                               30,
+                                                                               3.00,
+                                                                               maxNumTrails,
                                                                                nullptr);
 
     auto satisfied = std::make_shared<aikido::constraint::Satisfied>(human.getRightArmSpace());
