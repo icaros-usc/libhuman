@@ -49,7 +49,7 @@ int main(int argc, char** argv)
   // Load the human.
   ROS_INFO("Loading Human.");
   std::string modelSrc = "icaros";
-  human::Human human(env, true, modelSrc);
+  human::Human human(true);
 
   // Set pose of human to "face" table.
   Eigen::Isometry3d humanPose = Eigen::Isometry3d::Identity();
@@ -59,7 +59,7 @@ int main(int argc, char** argv)
         * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitX());
   humanPose.linear() = humanRot;
 
-  human.setPlacementPose(humanPose);
+//  human.setPlacementPose(humanPose);
 
   // Start Visualization Topic
   static const std::string topicName = topicName + "/simple_load";
@@ -133,29 +133,29 @@ int main(int argc, char** argv)
     sodaTSRs.push_back(sodaTSR);
   }
 
-  // Create self-collision constraint.
-  aikido::constraint::TestablePtr selfCollConstraint =
-    human.getSelfCollisionConstraint(
-      human.getRightArmSpace(), human.getRightArm()->getMetaSkeleton());
-
-  // Sample from TSR.
-  std::vector<std::pair<Eigen::VectorXd, double>> tsrSamples
-    = human.sampleRightTSR(sodaTSRs.at(0), 30, selfCollConstraint);
-
-  // Set sample.
-  human.getRightArm()->getMetaSkeleton()->setPositions(tsrSamples.at(0).first);
-
-  auto testState = human.getRightArmSpace()->createState();
-  human.getRightArmSpace()
-    ->convertPositionsToState(tsrSamples.at(0).first, testState);
-
-  if (selfCollConstraint->isSatisfied(testState))
-  {
-    std::cout << "" << std::endl;
-    std::cout << "GOOD FINAL STATE" << std::endl;
-    std::cout << tsrSamples.at(0).first.transpose() << std::endl;
-    std::cout << "FOUND " << tsrSamples.size() << " SOLS" << std::endl;
-  }
+//  // Create self-collision constraint.
+//  aikido::constraint::TestablePtr selfCollConstraint =
+//    human.getSelfCollisionConstraint(
+//      human.getRightArmSpace(), human.getRightArm()->getMetaSkeleton());
+//
+//  // Sample from TSR.
+//  std::vector<std::pair<Eigen::VectorXd, double>> tsrSamples
+//    = human.sampleRightTSR(sodaTSRs.at(0), 30, selfCollConstraint);
+//
+//  // Set sample.
+//  human.getRightArm()->getMetaSkeleton()->setPositions(tsrSamples.at(0).first);
+//
+//  auto testState = human.getRightArmSpace()->createState();
+//  human.getRightArmSpace()
+//    ->convertPositionsToState(tsrSamples.at(0).first, testState);
+//
+//  if (selfCollConstraint->isSatisfied(testState))
+//  {
+//    std::cout << "" << std::endl;
+//    std::cout << "GOOD FINAL STATE" << std::endl;
+//    std::cout << tsrSamples.at(0).first.transpose() << std::endl;
+//    std::cout << "FOUND " << tsrSamples.size() << " SOLS" << std::endl;
+//  }
 
   waitForUser("Press [ENTER] to exit: ");
 
