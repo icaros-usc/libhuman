@@ -44,12 +44,12 @@ int main(int argc, char** argv)
   ros::NodeHandle nh("~");
 
   // Create AIKIDO World
-  aikido::planner::WorldPtr env(new aikido::planner::World("simple_load"));
 
   // Load the human.
   ROS_INFO("Loading Human.");
   std::string modelSrc = "icaros";
   human::Human human(true);
+  auto env = human.getWorld();
 
   // Set pose of human to "face" table.
   Eigen::Isometry3d humanPose = Eigen::Isometry3d::Identity();

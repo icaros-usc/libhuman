@@ -59,7 +59,6 @@ namespace human {
             std::string uri = "";
             ros::param::param<std::string>(
                     "/" + confNamespace + "/" + key, uri, defaultUri);
-
             return dart::common::Uri(uri);
         }
 
@@ -133,8 +132,8 @@ namespace human {
             aikido::common::RNG::result_type rngSeed,
             const dart::common::ResourceRetrieverPtr &retriever)
             : aikido::robot::ros::RosRobot(
-            internal::getDartURI(humanUrdfUri, confNamespace, "default_urdf", DEFAULT_URDF),
-            internal::getDartURI(humanSrdfUri, confNamespace, "default_srdf", DEFAULT_SRDF),
+            internal::getDartURI(humanUrdfUri, confNamespace, "default_urdf", DEFAULT_HUMAN_URDF),
+            internal::getDartURI(humanSrdfUri, confNamespace, "default_srdf", DEFAULT_HUMAN_SRDF),
             "human",
             retriever),
 

@@ -68,8 +68,8 @@ namespace human {
 #define DEFAULT_HAND_TRAJ_CTRL "hand_controller"
 #define DEFAULT_EE_NAME "end_effector"
 
-#define DEFAULT_URDF "package://libhuman/robot/human_short.urdf"
-#define DEFAULT_SRDF "package://libhuman/robot/human_short.srdf"
+#define DEFAULT_HUMAN_URDF "package://libhuman/robot/human_short.urdf"
+#define DEFAULT_HUMAN_SRDF "package://libhuman/robot/human_short.srdf"
 
 
 //        const std::chrono::milliseconds threadExecutionCycle{10};

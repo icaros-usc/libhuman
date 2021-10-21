@@ -1,5 +1,5 @@
 <launch>
 
-    <rosparam file="$(find libhuman)/config/human.yaml" command="load">
+    <rosparam file="$(find libhuman)/config/human.yaml" command="load"/>
 
 </launch>
