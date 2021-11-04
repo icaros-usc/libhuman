@@ -13,6 +13,7 @@
   <depend>roslib</depend>
   <depend>srdfdom</depend>
   <depend>urdf</depend>
+  <depend>libada</depend>
 
   <!-- Workaround to build DART with optional features enabled. -->
   <depend>nlopt</depend>

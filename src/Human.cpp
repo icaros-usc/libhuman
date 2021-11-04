@@ -123,9 +123,9 @@ namespace human {
 //==============================================================================
     Human::Human(
             bool simulation,
+            aikido::planner::WorldPtr env,
             const dart::common::Uri &humanUrdfUri,
             const dart::common::Uri &humanSrdfUri,
-            aikido::planner::WorldPtr env,
             const std::string confNamespace,
             const std::chrono::milliseconds threadCycle,
             const ::ros::NodeHandle *node,

@@ -81,9 +81,9 @@ namespace human {
         /// \param[in] retriever Resource retriever for retrieving human.
         Human(
                 bool simulation,
+                aikido::planner::WorldPtr env,
                 const dart::common::Uri &humanUrdfUri = dart::common::Uri(""),
                 const dart::common::Uri &humanSrdfUri = dart::common::Uri(""),
-                aikido::planner::WorldPtr env = aikido::planner::World::create(),
                 const std::string confNamespace = DEFAULT_CONF_OBJ_NS,
                 const std::chrono::milliseconds threadCycle = DEFAULT_THREAD_CYCLE,
 

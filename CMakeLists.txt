@@ -36,6 +36,9 @@ find_package(aikido 0.4.0 REQUIRED
     io
 )
 
+find_package(libada REQUIRED)
+include_directories(${libada_INCLUDE_DIRS})
+
 find_package(Boost REQUIRED)
 
 find_package(roslib REQUIRED)
@@ -124,27 +127,39 @@ install(DIRECTORY resources DESTINATION share)
 #===============================================================================
 # Basic scripts to play around with.
 
-add_executable(simple_load
-  script/simple_load.cpp)
+#add_executable(simple_load
+#  script/simple_load.cpp)
+#
+#target_link_libraries(simple_load
+#  ${DART_LIBRARIES}
+#  ${aikido_LIBRARIES}
+#  ${Boost_LIBRARIES}
+#  libhuman)
+#
+#install(TARGETS simple_load RUNTIME DESTINATION bin)
+#
+#add_executable(simple_trajectories
+#        script/simple_trajectories.cpp)
+#
+#target_link_libraries(simple_trajectories
+#        ${DART_LIBRARIES}
+#        ${aikido_LIBRARIES}
+#        ${Boost_LIBRARIES}
+#        libhuman)
+#
+#install(TARGETS simple_trajectories RUNTIME DESTINATION bin)
 
-target_link_libraries(simple_load
-  ${DART_LIBRARIES}
-  ${aikido_LIBRARIES}
-  ${Boost_LIBRARIES}
-  libhuman)
+add_executable(simple_ada_trajectories
+        script/simple_ada_trajectories.cpp)
 
-install(TARGETS simple_load RUNTIME DESTINATION bin)
-
-add_executable(simple_trajectories
-        script/simple_trajectories.cpp)
-
-target_link_libraries(simple_trajectories
+target_link_libraries(simple_ada_trajectories
         ${DART_LIBRARIES}
         ${aikido_LIBRARIES}
         ${Boost_LIBRARIES}
+        libada
         libhuman)
 
-install(TARGETS simple_trajectories RUNTIME DESTINATION bin)
+install(TARGETS simple_ada_trajectories RUNTIME DESTINATION bin)
 
 #===============================================================================
 # Basic scripts to play around with.
