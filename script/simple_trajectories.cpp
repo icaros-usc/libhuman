@@ -153,11 +153,27 @@ int main(int argc, char **argv) {
 
     waitForUser("Press [ENTER] to execute");
 
-    human.executeTrajectory(traj);
+    auto future = human.getRightArm()->executeTrajectory(traj);
+
+    if (!future.valid())
+    {
+        std::__throw_future_error(0);
+    }
+    future.wait();
+    // Throw any exceptions
+    future.get();
 
     waitForUser("Press [ENTER] to execute");
 
-    human.executeTrajectory(traj_rev);
+    future = human.getRightArm()->executeTrajectory(traj_rev);
+
+    if (!future.valid())
+    {
+        std::__throw_future_error(0);
+    }
+    future.wait();
+    // Throw any exceptions
+    future.get();
 
     waitForUser("Press [ENTER] to exit: ");
 

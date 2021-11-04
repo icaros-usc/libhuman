@@ -1,19 +1,19 @@
 # Arm configuration parameters
-adaConf:
+humanConf:
   default_urdf: package://libhuman/robot/human_short.urdf
   default_srdf: package://libhuman/robot/human_short.srdf
   default_accel_lim: 2.0
   default_vel_lim: 0.7
   end_effector: RHand3
-  arm: [RCollar, RWrist]
+  arm: [ RCollar, RWrist ]
   hand_base: RHand3
   arm_controller: trajectory_controller
   hand_controller: hand_controller
-  named_configs: package://libada/resources/g2_6d_named_configs.yaml
+  named_configs: package://libhuman/resources/human_named_configs.yaml
 
 # hardware parameters
 soft_limits:
-  eff: [16,16,16,10,10,10,1.3,1.3]
+  eff: [ 16,16,16,10,10,10,1.3,1.3 ]
 
 # arm + gripper joint_state publisher
 joint_state_controller:
@@ -25,35 +25,35 @@ joint_mode_controller:
   mode: MODE
   type: pr_ros_controllers/JointModeController
   default: VELOCITY
-  joints: [joint_mode]
+  joints: [ joint_mode ]
 
 # whole-arm base velocity controller
 velocity_controller:
   mode: VELOCITY
   type: pr_ros_controllers/JointGroupVelocityController
-  joints: [j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
-           j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6]
+  joints: [ j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
+            j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6 ]
 
 # whole-arm base position controller
 position_controller:
   mode: POSITION
   type: pr_ros_controllers/JointGroupPositionController
-  joints: [j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
-           j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6]
+  joints: [ j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
+            j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6 ]
 
 # whole-arm base effort controller
 effort_controller:
   mode: EFFORT
   type: pr_ros_controllers/JointGroupEffortController
-  joints: [j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
-           j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6]
+  joints: [ j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
+            j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6 ]
 
 # whole-arm base trajectory controller
 trajectory_controller:
   mode: TRAJECTORY
   type: velocity_controllers/JointTrajectoryController
-  joints: [j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
-           j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6]
+  joints: [ j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
+            j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6 ]
   constraints:
     stopped_velocity_tolerance: 1.0
     j2n6s200_joint_1:
@@ -75,12 +75,12 @@ trajectory_controller:
       goal: 0.02
       trajectory: 0.05
   gains: # Required because we're controlling a velocity interface
-    j2n6s200_joint_1: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_2: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_3: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_4: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_5: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_6: {p: 3,  d: 0, i: 0, i_clamp: 1}
+    j2n6s200_joint_1: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_2: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_3: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_4: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_5: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_6: { p: 3,  d: 0, i: 0, i_clamp: 1 }
 
 # whole-arm base trajectory controller
 move_until_touch_topic_controller:
@@ -94,8 +94,8 @@ move_until_touch_topic_controller:
   # forcetorque_tare_name: /fingervision/fingerVisionTaring
   sensor_force_limit: 50
   sensor_torque_limit: 5
-  joints: [j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
-           j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6]
+  joints: [ j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
+            j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6 ]
   control_type: velocity
   constraints:
     j2n6s200_joint_1:
@@ -117,12 +117,12 @@ move_until_touch_topic_controller:
       goal: 0.02
       trajectory: 0.05
   gains: # Required because we're controlling a velocity interface
-    j2n6s200_joint_1: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_2: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_3: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_4: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_5: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_6: {p: 3,  d: 0, i: 0, i_clamp: 1}
+    j2n6s200_joint_1: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_2: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_3: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_4: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_5: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_6: { p: 3,  d: 0, i: 0, i_clamp: 1 }
 
 # Optional controller that might be useful for testing.
 # Should do the same thing as trajectory_controller, but this is
@@ -130,8 +130,8 @@ move_until_touch_topic_controller:
 rewd_trajectory_controller:
   mode: TRAJECTORY
   type: rewd_controllers/JointTrajectoryController
-  joints: [j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
-           j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6]
+  joints: [ j2n6s200_joint_1, j2n6s200_joint_2, j2n6s200_joint_3,
+            j2n6s200_joint_4, j2n6s200_joint_5, j2n6s200_joint_6 ]
   constraints:
     stopped_velocity_tolerance: 1.0
     j2n6s200_joint_1:
@@ -153,12 +153,12 @@ rewd_trajectory_controller:
       goal: 0.02
       trajectory: 0.05
   gains: # Required because we're controlling a velocity interface
-    j2n6s200_joint_1: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_2: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_3: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_4: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_5: {p: 3,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_6: {p: 3,  d: 0, i: 0, i_clamp: 1}
+    j2n6s200_joint_1: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_2: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_3: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_4: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_5: { p: 3,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_6: { p: 3,  d: 0, i: 0, i_clamp: 1 }
   control_type: velocity
 
 ##############################################
@@ -167,26 +167,26 @@ rewd_trajectory_controller:
 hand_velocity_controller:
   mode: VELOCITY
   type: pr_ros_controllers/JointGroupVelocityController
-  joints: [j2n6s200_joint_finger_1, j2n6s200_joint_finger_2]
+  joints: [ j2n6s200_joint_finger_1, j2n6s200_joint_finger_2 ]
 
 # gripper base position controller
 hand_position_controller:
   mode: POSITION
   type: pr_ros_controllers/JointGroupPositionController
-  joints: [j2n6s200_joint_finger_1, j2n6s200_joint_finger_2]
+  joints: [ j2n6s200_joint_finger_1, j2n6s200_joint_finger_2 ]
 
 # gripper base effort controller
 hand_effort_controller:
   mode: EFFORT
   type: pr_ros_controllers/JointGroupEffortController
-  joints: [j2n6s200_joint_finger_1, j2n6s200_joint_finger_2]
+  joints: [ j2n6s200_joint_finger_1, j2n6s200_joint_finger_2 ]
 
 hand_controller:
   mode: TRAJECTORY
   type: velocity_controllers/JointTrajectoryController
-  joints: [j2n6s200_joint_finger_1, j2n6s200_joint_finger_2]
+  joints: [ j2n6s200_joint_finger_1, j2n6s200_joint_finger_2 ]
   constraints:
     stopped_velocity_tolerance: 1.0
   gains: # Required because we're controlling a velocity interface
-    j2n6s200_joint_finger_1: {p: 1,  d: 0, i: 0, i_clamp: 1}
-    j2n6s200_joint_finger_2: {p: 1,  d: 0, i: 0, i_clamp: 1}
+    j2n6s200_joint_finger_1: { p: 1,  d: 0, i: 0, i_clamp: 1 }
+    j2n6s200_joint_finger_2: { p: 1,  d: 0, i: 0, i_clamp: 1 }
