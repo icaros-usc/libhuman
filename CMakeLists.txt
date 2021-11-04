@@ -135,6 +135,17 @@ target_link_libraries(simple_load
 
 install(TARGETS simple_load RUNTIME DESTINATION bin)
 
+add_executable(simple_trajectories
+        script/simple_trajectories.cpp)
+
+target_link_libraries(simple_trajectories
+        ${DART_LIBRARIES}
+        ${aikido_LIBRARIES}
+        ${Boost_LIBRARIES}
+        libhuman)
+
+install(TARGETS simple_trajectories RUNTIME DESTINATION bin)
+
 #===============================================================================
 # Basic scripts to play around with.
 #
